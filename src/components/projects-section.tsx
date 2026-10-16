@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useMemo, useRef, useState, useTransition } from "react";
 import {
   CATEGORY_LABELS,
@@ -18,10 +19,9 @@ type LoadState = "loading" | "ready" | "error";
 
 const FILTERS: { id: Filter; label: string }[] = [
   { id: "all", label: "All" },
+  { id: "design", label: CATEGORY_LABELS.design },
   { id: "industry", label: CATEGORY_LABELS.industry },
   { id: "aerospace", label: CATEGORY_LABELS.aerospace },
-  { id: "robotics", label: CATEGORY_LABELS.robotics },
-  { id: "campus", label: CATEGORY_LABELS.campus },
 ];
 
 const STATUS_LABEL: Record<ProjectStatus, string> = {
@@ -39,9 +39,9 @@ function statusTone(status: ProjectStatus) {
 }
 
 export function ProjectsSection() {
+  const featured = PROJECTS.find((p) => p.featured) ?? PROJECTS[0];
   const [filter, setFilter] = useState<Filter>("all");
-  const [openId, setOpenId] = useState<string | null>(null);
-  // Static portfolio data is ready on first paint; loading/error are demoable states.
+  const [openId, setOpenId] = useState<string | null>(featured?.id ?? null);
   const [loadState, setLoadState] = useState<LoadState>("ready");
   const [isPending, startTransition] = useTransition();
   const loadGeneration = useRef(0);
@@ -87,9 +87,10 @@ export function ProjectsSection() {
           >
             Projects
           </h2>
-            <p className="mt-3 max-w-lg text-ink-muted">
-            Selected work across industry, aerospace, robotics, and campus
-            leadership — filter by area and expand a row for detail.
+          <p className="mt-3 max-w-lg text-ink-muted">
+            Three highlights for now — start with the ME 3250 heat-insert
+            machine, then industry and aerospace work. Expand a row for the full
+            story.
           </p>
         </div>
 
@@ -106,7 +107,7 @@ export function ProjectsSection() {
               aria-selected={filter === item.id}
               onClick={() => onFilter(item.id)}
               className={cn(
-                "rounded-sm border px-3 py-1.5 font-mono text-[11px] uppercase tracking-[0.14em] transition-colors",
+                "rounded-md border px-3 py-1.5 font-mono text-[11px] uppercase tracking-[0.14em] transition-colors",
                 filter === item.id
                   ? "border-ink bg-ink text-white"
                   : "border-ink/12 bg-white text-ink-muted hover:border-ink/30 hover:text-ink",
@@ -160,6 +161,7 @@ function ProjectRow({
   onToggle: () => void;
 }) {
   const panelId = `${project.id}-panel`;
+  const isFeatured = Boolean(project.featured);
 
   return (
     <li>
@@ -178,6 +180,14 @@ function ProjectRow({
             <span className="font-display text-2xl tracking-tight text-ink sm:text-3xl">
               {project.title}
             </span>
+            {isFeatured && (
+              <Badge
+                variant="outline"
+                className="rounded-sm border-copper/40 bg-copper/10 font-mono text-[10px] text-copper-deep"
+              >
+                Featured
+              </Badge>
+            )}
             <Badge
               variant="outline"
               className={cn(
@@ -218,11 +228,81 @@ function ProjectRow({
         )}
       >
         <div className="overflow-hidden">
-          <div className="pb-8 pl-0 sm:pl-10">
+          <div className="space-y-8 pb-10 pl-0 sm:pl-10">
+            {project.course && (
+              <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-copper">
+                {project.course}
+              </p>
+            )}
+
             <p className="max-w-2xl text-sm leading-relaxed text-ink-muted sm:text-base">
               {project.description}
             </p>
-            <Separator className="my-5 max-w-2xl bg-ink/10" />
+
+            {project.images && project.images.length > 0 && (
+              <div>
+                <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-ink-faint">
+                  Build photos
+                </p>
+                <ul className="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
+                  {project.images.map((image) => (
+                    <li key={image.src}>
+                      <figure className="space-y-1.5">
+                        <div className="relative aspect-[4/3] overflow-hidden rounded-md ring-1 ring-ink/10">
+                          <Image
+                            src={image.src}
+                            alt={image.alt}
+                            fill
+                            sizes="(max-width: 640px) 45vw, 180px"
+                            className="object-cover"
+                          />
+                        </div>
+                        <figcaption className="text-[11px] leading-snug text-ink-faint">
+                          {image.caption}
+                        </figcaption>
+                      </figure>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {project.contributions && project.contributions.length > 0 && (
+              <div>
+                <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-ink-faint">
+                  What I established & built
+                </p>
+                <ul className="mt-3 max-w-2xl space-y-2 text-sm text-ink-muted">
+                  {project.contributions.map((item) => (
+                    <li key={item} className="flex gap-2">
+                      <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-copper" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {project.process && project.process.length > 0 && (
+              <div>
+                <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-ink-faint">
+                  How it came together
+                </p>
+                <ol className="mt-3 max-w-2xl space-y-3">
+                  {project.process.map((step, i) => (
+                    <li key={step} className="flex gap-3 text-sm text-ink-muted">
+                      <span className="font-mono text-[11px] text-ink-faint tabular-nums">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                      <span className="leading-relaxed">{step}</span>
+                    </li>
+                  ))}
+                </ol>
+              </div>
+            )}
+
+            <Separator className="max-w-2xl bg-ink/10" />
+
             <div className="grid gap-6 sm:grid-cols-2">
               <div>
                 <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-ink-faint">
@@ -253,6 +333,12 @@ function ProjectRow({
                 </ul>
               </div>
             </div>
+
+            {project.pending && project.pending.length > 0 && (
+              <p className="max-w-2xl font-mono text-[11px] uppercase tracking-[0.12em] text-ink-faint">
+                Coming next: {project.pending.join(" · ")}
+              </p>
+            )}
           </div>
         </div>
       </div>
@@ -263,7 +349,7 @@ function ProjectRow({
 function ProjectsLoading() {
   return (
     <div className="space-y-4" aria-busy="true" aria-label="Loading projects">
-      {Array.from({ length: 4 }).map((_, i) => (
+      {Array.from({ length: 3 }).map((_, i) => (
         <div key={i} className="space-y-3 border-b border-ink/10 py-6">
           <Skeleton className="h-8 w-2/3 rounded-sm bg-ink/10" />
           <Skeleton className="h-4 w-full max-w-xl rounded-sm bg-ink/8" />
@@ -279,7 +365,7 @@ function ProjectsEmpty() {
     <div className="border border-dashed border-ink/20 px-6 py-16 text-center">
       <p className="font-display text-2xl text-ink">No projects in this filter</p>
       <p className="mt-2 text-sm text-ink-muted">
-        Try another discipline, or clear the filter to see everything.
+        Try another area, or clear the filter to see everything.
       </p>
     </div>
   );
@@ -293,8 +379,7 @@ function ProjectsError({ onRetry }: { onRetry: () => void }) {
     >
       <p className="font-display text-2xl text-ink">Couldn’t load projects</p>
       <p className="mt-2 text-sm text-ink-muted">
-        Something went wrong fetching the project list. Retry to reload
-        placeholders.
+        Something went wrong loading projects. Retry to reload.
       </p>
       <Button
         type="button"
