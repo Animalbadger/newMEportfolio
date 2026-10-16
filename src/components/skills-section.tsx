@@ -18,8 +18,8 @@ export function SkillsSection() {
           Skills & tools
         </h2>
         <p className="mt-3 max-w-lg text-ink-muted">
-          Core mechanical engineering capabilities — ready to swap for
-          coursework-specific tools as the portfolio evolves.
+          Tools and methods from coursework, HVAC/MEP internships, and campus
+          engineering leadership.
         </p>
 
         <div className="mt-12 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">

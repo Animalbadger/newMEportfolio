@@ -1,6 +1,7 @@
 import { SiteHeader } from "@/components/site-header";
 import { Hero } from "@/components/hero";
 import { PhotoStrip } from "@/components/photo-strip";
+import { AboutSection } from "@/components/about-section";
 import { ProjectsSection } from "@/components/projects-section";
 import { SkillsSection } from "@/components/skills-section";
 import { ContactSection } from "@/components/contact-section";
@@ -13,6 +14,7 @@ export default function Home() {
       <main className="flex-1">
         <Hero />
         <PhotoStrip />
+        <AboutSection />
         <ProjectsSection />
         <SkillsSection />
         <ContactSection />

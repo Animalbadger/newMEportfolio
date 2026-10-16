@@ -5,6 +5,7 @@ import { brandName, PROFILE } from "@/lib/profile";
 import { cn } from "@/lib/utils";
 
 const LINKS = [
+  { href: "#about", label: "About" },
   { href: "#projects", label: "Projects" },
   { href: "#skills", label: "Skills" },
   { href: "#contact", label: "Contact" },

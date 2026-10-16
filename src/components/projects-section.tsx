@@ -18,10 +18,10 @@ type LoadState = "loading" | "ready" | "error";
 
 const FILTERS: { id: Filter; label: string }[] = [
   { id: "all", label: "All" },
-  { id: "mechanism", label: CATEGORY_LABELS.mechanism },
-  { id: "thermal", label: CATEGORY_LABELS.thermal },
-  { id: "structures", label: CATEGORY_LABELS.structures },
-  { id: "automation", label: CATEGORY_LABELS.automation },
+  { id: "hvac", label: CATEGORY_LABELS.hvac },
+  { id: "construction", label: CATEGORY_LABELS.construction },
+  { id: "aerospace", label: CATEGORY_LABELS.aerospace },
+  { id: "leadership", label: CATEGORY_LABELS.leadership },
 ];
 
 const STATUS_LABEL: Record<ProjectStatus, string> = {
@@ -87,9 +87,9 @@ export function ProjectsSection() {
           >
             Projects
           </h2>
-          <p className="mt-3 max-w-lg text-ink-muted">
-            Placeholder case studies with solid ME copy until real write-ups and
-            drawings land. Filter by discipline; expand a row for detail.
+            <p className="mt-3 max-w-lg text-ink-muted">
+            Internships, research, and leadership from the résumé — filter by
+            area and expand a row for detail.
           </p>
         </div>
 

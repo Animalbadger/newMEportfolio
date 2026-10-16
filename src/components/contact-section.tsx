@@ -2,6 +2,8 @@ import { PROFILE } from "@/lib/profile";
 import { Button } from "@/components/ui/button";
 
 export function ContactSection() {
+  const phoneHref = `tel:${PROFILE.phone.replace(/[^\d+]/g, "")}`;
+
   return (
     <section
       id="contact"
@@ -35,12 +37,8 @@ export function ContactSection() {
           Get in touch
         </h2>
         <p className="mt-4 max-w-lg text-ink-muted">
-          Reach out for internships, co-ops, or project conversations. Update
-          email and social links in{" "}
-          <code className="font-mono text-[13px] text-copper">
-            src/lib/profile.ts
-          </code>
-          .
+          Open to mechanical engineering internships and full-time roles —
+          especially building systems, design, and field-facing work.
         </p>
 
         <div className="mt-10 flex flex-wrap gap-3">
@@ -65,6 +63,14 @@ export function ContactSection() {
               LinkedIn
             </a>
           </Button>
+          <Button
+            asChild
+            variant="outline"
+            size="lg"
+            className="rounded-md border-ink/15 bg-white px-6 text-ink hover:bg-steel-panel"
+          >
+            <a href={phoneHref}>{PROFILE.phone}</a>
+          </Button>
         </div>
 
         <ul className="mt-12 flex flex-wrap gap-x-8 gap-y-3 font-mono text-[12px] uppercase tracking-[0.16em] text-ink-faint">
@@ -75,25 +81,23 @@ export function ContactSection() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              LinkedIn
-            </a>
-          </li>
-          <li>
-            <a
-              href={PROFILE.github}
-              className="transition-colors hover:text-copper"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              GitHub
+              linkedin.com/in/zaid-alsalihi
             </a>
           </li>
           <li>
             <a
               href={`mailto:${PROFILE.email}`}
-              className="transition-colors hover:text-copper"
+              className="normal-case tracking-normal transition-colors hover:text-copper"
             >
               {PROFILE.email}
+            </a>
+          </li>
+          <li>
+            <a
+              href={phoneHref}
+              className="transition-colors hover:text-copper"
+            >
+              {PROFILE.phone}
             </a>
           </li>
         </ul>

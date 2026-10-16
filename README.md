@@ -33,8 +33,8 @@ Open [http://127.0.0.1:4327](http://127.0.0.1:4327).
 
 | What              | Where                                      |
 | ----------------- | ------------------------------------------ |
-| Name, email, LinkedIn, GitHub | `src/lib/profile.ts`           |
-| Projects & skills | `src/lib/projects.ts`                      |
+| Name, about, contact, education | `src/lib/profile.ts`         |
+| Projects & skills               | `src/lib/projects.ts`         |
 | Domain / deploy   | Point any host (Vercel, Netlify, etc.) at this repo; set the custom domain in that host’s dashboard. Update Open Graph URLs later if needed. |
 
 Brand display uses `PROFILE.firstName` (and optional `lastName`). Search for `PROFILE` or `@/lib/profile` when renaming.
