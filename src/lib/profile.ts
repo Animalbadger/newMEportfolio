@@ -21,7 +21,7 @@ export const PROFILE = {
   },
   about: {
     lead:
-      "I’m a first-generation college student in my family. We immigrated to the United States in 2013, and I grew up in a single-parent household — so I’m used to figuring things out, staying organized, and owning the work in front of me.",
+      "I’m a first-generation college student in my family. We immigrated to the United States in 2013, and I grew up in a single-parent household — that path set me up with discipline and focus that I bring into every class, lab, and build.",
     body:
       "At Cal Poly Pomona I’m studying mechanical engineering and keeping my interests wide open — design, analysis, manufacturing, aerospace, and real-world systems. I started at Cypress College (A.S. in Mathematics and Physics), co-founded the engineering society there, and have spent summers in industry on thermal/fluid systems and mechanical project coordination. Outside class I led aerodynamics for the Flying Broncos and completed NASA community-college engineering programs.",
     highlights: [
