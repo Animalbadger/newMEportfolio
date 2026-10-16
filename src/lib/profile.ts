@@ -21,12 +21,11 @@ export const PROFILE = {
   },
   about: {
     lead:
-      "I’m a first-generation college graduate in my family. My mom raised me on her own, and we immigrated to the United States in 2013 — that path shaped how I show up: hardworking, grateful, and focused on building useful things.",
+      "I’m a first-generation college student in my family. We immigrated to the United States in 2013, and I grew up in a single-parent household — so I’m used to figuring things out, staying organized, and owning the work in front of me.",
     body:
       "At Cal Poly Pomona I’m studying mechanical engineering and keeping my interests wide open — design, analysis, manufacturing, aerospace, and real-world systems. I started at Cypress College (A.S. in Mathematics and Physics), co-founded the engineering society there, and have spent summers in industry on thermal/fluid systems and mechanical project coordination. Outside class I led aerodynamics for the Flying Broncos and completed NASA community-college engineering programs.",
     highlights: [
-      "First-generation college graduate; immigrated to the U.S. in 2013",
-      "Raised by a single mother",
+      "First-generation college student · immigrated to the U.S. in 2013",
       "Cal Poly Pomona B.S. Mechanical Engineering · Dec 2026",
       "Cypress College A.S. Mathematics & A.S. Physics · May 2024",
       "Curtis and Jill Scheetz Family Outstanding Campus Leader Scholarship",
