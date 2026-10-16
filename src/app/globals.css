@@ -61,29 +61,29 @@
 }
 
 :root {
-  /* Machine-shop cool steel + copper accent — not purple, not cream-serif */
-  --steel-mist: #e4ebf1;
-  --steel-panel: #f2f5f8;
-  --steel-line: #c5d0db;
-  --ink: #1a2332;
-  --ink-muted: #4a5568;
-  --ink-faint: #7a8796;
-  --copper: #c47a3a;
-  --copper-deep: #8f5524;
+  /* Modern white / light gray — clean employer-facing surface */
+  --steel-mist: #ffffff;
+  --steel-panel: #f4f5f7;
+  --steel-line: #e4e6eb;
+  --ink: #1c1f26;
+  --ink-muted: #5c6370;
+  --ink-faint: #9198a3;
+  --copper: #3d6b8c;
+  --copper-deep: #2a4f6b;
 
-  --background: var(--steel-panel);
+  --background: #ffffff;
   --foreground: var(--ink);
   --card: #ffffff;
   --card-foreground: var(--ink);
   --popover: #ffffff;
   --popover-foreground: var(--ink);
   --primary: var(--ink);
-  --primary-foreground: var(--steel-mist);
-  --secondary: #d8e0e8;
+  --primary-foreground: #ffffff;
+  --secondary: #eef0f3;
   --secondary-foreground: var(--ink);
-  --muted: #dce3ea;
+  --muted: #f0f1f4;
   --muted-foreground: var(--ink-muted);
-  --accent: #dce3ea;
+  --accent: #eef0f3;
   --accent-foreground: var(--ink);
   --destructive: oklch(0.577 0.245 27.325);
   --border: var(--steel-line);
@@ -94,12 +94,12 @@
   --chart-3: var(--ink);
   --chart-4: #6b7c8f;
   --chart-5: #9aabbb;
-  --radius: 0.375rem;
-  --sidebar: var(--steel-mist);
+  --radius: 0.5rem;
+  --sidebar: #ffffff;
   --sidebar-foreground: var(--ink);
   --sidebar-primary: var(--ink);
-  --sidebar-primary-foreground: var(--steel-mist);
-  --sidebar-accent: #dce3ea;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #eef0f3;
   --sidebar-accent-foreground: var(--ink);
   --sidebar-border: var(--steel-line);
   --sidebar-ring: var(--copper);

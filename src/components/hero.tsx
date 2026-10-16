@@ -36,7 +36,7 @@ export function Hero() {
             <Button
               asChild
               size="lg"
-              className="rounded-sm bg-ink px-6 text-steel-mist hover:bg-ink/90"
+              className="rounded-md bg-ink px-6 text-white hover:bg-ink/90"
             >
               <a href="#projects">View projects</a>
             </Button>
@@ -44,7 +44,7 @@ export function Hero() {
               asChild
               variant="outline"
               size="lg"
-              className="rounded-sm border-ink/25 bg-transparent px-6 text-ink hover:bg-ink/5"
+              className="rounded-md border-ink/15 bg-white/70 px-6 text-ink hover:bg-white"
             >
               <a href="#contact">Get in touch</a>
             </Button>

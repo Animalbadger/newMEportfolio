@@ -108,8 +108,8 @@ export function ProjectsSection() {
               className={cn(
                 "rounded-sm border px-3 py-1.5 font-mono text-[11px] uppercase tracking-[0.14em] transition-colors",
                 filter === item.id
-                  ? "border-ink bg-ink text-steel-mist"
-                  : "border-ink/15 bg-transparent text-ink-muted hover:border-ink/35 hover:text-ink",
+                  ? "border-ink bg-ink text-white"
+                  : "border-ink/12 bg-white text-ink-muted hover:border-ink/30 hover:text-ink",
               )}
             >
               {item.label}
@@ -299,7 +299,7 @@ function ProjectsError({ onRetry }: { onRetry: () => void }) {
       <Button
         type="button"
         onClick={onRetry}
-        className="mt-6 rounded-sm bg-ink text-steel-mist hover:bg-ink/90"
+        className="mt-6 rounded-md bg-ink text-white hover:bg-ink/90"
       >
         Retry
       </Button>

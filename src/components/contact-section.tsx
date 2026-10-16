@@ -5,22 +5,22 @@ export function ContactSection() {
   return (
     <section
       id="contact"
-      className="scroll-mt-20 relative overflow-hidden bg-ink px-5 py-20 text-steel-mist sm:px-8 sm:py-28"
+      className="scroll-mt-20 relative overflow-hidden border-t border-ink/8 bg-white px-5 py-20 sm:px-8 sm:py-28"
       aria-labelledby="contact-heading"
     >
       <div
-        className="pointer-events-none absolute inset-0 opacity-30"
+        className="pointer-events-none absolute inset-0 opacity-40"
         aria-hidden
         style={{
           backgroundImage: `
-            linear-gradient(to right, rgba(201,214,224,0.12) 1px, transparent 1px),
-            linear-gradient(to bottom, rgba(201,214,224,0.12) 1px, transparent 1px)
+            linear-gradient(to right, rgba(28,31,38,0.04) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(28,31,38,0.04) 1px, transparent 1px)
           `,
-          backgroundSize: "40px 40px",
+          backgroundSize: "48px 48px",
         }}
       />
       <div
-        className="pointer-events-none absolute -right-20 top-0 h-72 w-72 rounded-full bg-copper/20 blur-3xl"
+        className="pointer-events-none absolute -right-16 top-8 h-64 w-64 rounded-full bg-copper/8 blur-3xl"
         aria-hidden
       />
 
@@ -30,13 +30,14 @@ export function ContactSection() {
         </p>
         <h2
           id="contact-heading"
-          className="mt-3 max-w-xl font-display text-4xl tracking-tight sm:text-5xl"
+          className="mt-3 max-w-xl font-display text-4xl tracking-tight text-ink sm:text-5xl"
         >
-          Résumé & contact
+          Get in touch
         </h2>
-        <p className="mt-4 max-w-lg text-steel-mist/70">
-          Placeholder links until real email, LinkedIn, GitHub, and PDF are
-          wired in. Update them in{" "}
+        <p className="mt-4 max-w-lg text-ink-muted">
+          This site is the portfolio link from the résumé. Reach out for
+          internships, co-ops, or project conversations — update contact details
+          in{" "}
           <code className="font-mono text-[13px] text-copper">
             src/lib/profile.ts
           </code>
@@ -47,21 +48,27 @@ export function ContactSection() {
           <Button
             asChild
             size="lg"
-            className="rounded-sm bg-copper px-6 text-ink hover:bg-copper/90"
+            className="rounded-md bg-ink px-6 text-white hover:bg-ink/90"
           >
-            <a href={PROFILE.resumeUrl}>{PROFILE.resumeLabel}</a>
+            <a href={`mailto:${PROFILE.email}`}>Email {PROFILE.firstName}</a>
           </Button>
           <Button
             asChild
             variant="outline"
             size="lg"
-            className="rounded-sm border-steel-mist/30 bg-transparent px-6 text-steel-mist hover:bg-steel-mist/10"
+            className="rounded-md border-ink/15 bg-white px-6 text-ink hover:bg-steel-panel"
           >
-            <a href={`mailto:${PROFILE.email}`}>{PROFILE.email}</a>
+            <a
+              href={PROFILE.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              LinkedIn
+            </a>
           </Button>
         </div>
 
-        <ul className="mt-12 flex flex-wrap gap-x-8 gap-y-3 font-mono text-[12px] uppercase tracking-[0.16em] text-steel-mist/65">
+        <ul className="mt-12 flex flex-wrap gap-x-8 gap-y-3 font-mono text-[12px] uppercase tracking-[0.16em] text-ink-faint">
           <li>
             <a
               href={PROFILE.linkedin}
@@ -87,7 +94,7 @@ export function ContactSection() {
               href={`mailto:${PROFILE.email}`}
               className="transition-colors hover:text-copper"
             >
-              Email
+              {PROFILE.email}
             </a>
           </li>
         </ul>

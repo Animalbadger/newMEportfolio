@@ -4,7 +4,7 @@ export function SkillsSection() {
   return (
     <section
       id="skills"
-      className="scroll-mt-20 border-t border-ink/10 bg-steel-mist px-5 py-20 sm:px-8 sm:py-28"
+      className="scroll-mt-20 border-t border-ink/8 bg-white px-5 py-20 sm:px-8 sm:py-28"
       aria-labelledby="skills-heading"
     >
       <div className="mx-auto max-w-6xl">
@@ -19,7 +19,7 @@ export function SkillsSection() {
         </h2>
         <p className="mt-3 max-w-lg text-ink-muted">
           Core mechanical engineering capabilities — ready to swap for
-          coursework-specific tools as the résumé evolves.
+          coursework-specific tools as the portfolio evolves.
         </p>
 
         <div className="mt-12 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
