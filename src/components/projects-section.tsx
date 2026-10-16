@@ -239,6 +239,37 @@ function ProjectRow({
               {project.description}
             </p>
 
+            {project.videos && project.videos.length > 0 && (
+              <div>
+                <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-ink-faint">
+                  Demo video
+                </p>
+                <ul className="mt-3 grid gap-4 sm:grid-cols-2">
+                  {project.videos.map((video) => (
+                    <li key={video.src}>
+                      <figure className="space-y-1.5">
+                        <div className="overflow-hidden rounded-md bg-ink/5 ring-1 ring-ink/10">
+                          <video
+                            className="aspect-video w-full bg-black object-contain"
+                            controls
+                            playsInline
+                            preload="metadata"
+                            poster={video.poster}
+                          >
+                            <source src={video.src} type="video/mp4" />
+                            Your browser does not support embedded video.
+                          </video>
+                        </div>
+                        <figcaption className="text-[11px] leading-snug text-ink-faint">
+                          {video.caption}
+                        </figcaption>
+                      </figure>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
             {project.images && project.images.length > 0 && (
               <div className="space-y-8">
                 {(["cad", "drawing", "photo"] as const).map((kind) => {
