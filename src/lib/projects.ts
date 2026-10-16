@@ -41,10 +41,10 @@ export const PROJECTS: Project[] = [
     id: "heat-insert-machine",
     title: "Automated 3D-Printed Part Repair Machine",
     summary:
-      "A vision-guided three-axis heat-set insert machine that finds holes in 3D-printed parts and presses threaded inserts with consistent depth — built for ME 3250 at Cal Poly Pomona.",
+      "A vision-guided three-axis heat-set insert machine that finds holes in 3D-printed parts and presses threaded inserts with consistent depth — built at Cal Poly Pomona.",
     description:
-      "Threaded inserts give 3D-printed parts durable, reusable threads, but installing them by hand is slow and inconsistent. For ME 3250, I established and built an automated heat-insert machine: a rigid aluminum base with integrated Y-axis motion, a belt-driven X-axis and lead-screw Z-axis gantry, a stainless work bed with insert staging on dowel pins, and a heated toolhead that picks and seats inserts. The system uses stepper-driven motion, homing sensors, and a Pi camera for hole detection — similar in architecture to a compact CNC/3D-printer gantry, purpose-built for repair and insert placement.",
-    role: "Mechanical design & fabrication lead · ME 3250",
+      "Threaded inserts give 3D-printed parts durable, reusable threads, but installing them by hand is slow and inconsistent. I established and built an automated heat-insert machine: a rigid aluminum base with integrated Y-axis motion, a belt-driven X-axis and lead-screw Z-axis gantry, a stainless work bed with insert staging on dowel pins, and a heated toolhead that picks and seats inserts. The system uses stepper-driven motion, homing sensors, and a Pi camera for hole detection — similar in architecture to a compact CNC/3D-printer gantry, purpose-built for repair and insert placement.",
+    role: "Mechanical design & fabrication lead",
     tools: [
       "SolidWorks",
       "GD&T drawings",
@@ -64,7 +64,6 @@ export const PROJECTS: Project[] = [
     category: "design",
     year: "2026",
     featured: true,
-    course: "ME 3250.04 · Automated Heat Insert Machine · Prof. John Caffrey",
     contributions: [
       "Base assembly — rigidity, alignment, and mounting for the full XYZ system",
       "Y-axis motion on the base — rods, bearings, belt drive, and motor housing",
@@ -170,8 +169,8 @@ export const PROJECTS: Project[] = [
     summary:
       "A servo-driven robotic arm that automatically picks and relocates cans — custom SolidWorks parts, geared gripper, and Arduino sequencing from CAD to bench.",
     description:
-      "Built for Intro to Design (Project 3), the Can Arm is a compact 3-DOF manipulator that transfers objects (empty soda cans) through a fully programmed servo sequence — no hand-cranking, no potentiometer babysitting. I designed and fabricated the mechanical stack in SolidWorks: base and cover, arm and arm holder, rotating assembly with ball bearing, servo mounts, and a left/right claw pair closed by an MG995-driven gear mesh. COTS MG995 servos and an Arduino kit handled actuation and control; a variable DC supply fed the motors through a breadboard while the Arduino drove a repeatable open-loop trajectory (home → grasp → lift → rotate → place). The arm mounts to a 3D-printed base on a wooden plank for stiffness — the same shop instincts as my heat-insert gantry and internship drawing reviews: design for printability, document with BOM/schematics, then iterate until the sequence hits every time.",
-    role: "Design & build · Intro to Design Project 3",
+      "The Can Arm is a compact 3-DOF manipulator that transfers objects (empty soda cans) through a fully programmed servo sequence — no hand-cranking, no potentiometer babysitting. I designed and fabricated the mechanical stack in SolidWorks: base and cover, arm and arm holder, rotating assembly with ball bearing, servo mounts, and a left/right claw pair closed by an MG995-driven gear mesh. COTS MG995 servos and an Arduino kit handled actuation and control; a variable DC supply fed the motors through a breadboard while the Arduino drove a repeatable open-loop trajectory (home → grasp → lift → rotate → place). The arm mounts to a 3D-printed base on a wooden plank for stiffness — the same shop instincts as my heat-insert gantry and internship drawing reviews: design for printability, document with BOM/schematics, then iterate until the sequence hits every time.",
+    role: "Design & build",
     tools: [
       "SolidWorks (parts, assembly, drawings)",
       "FDM 3D printing (PLA)",
@@ -191,8 +190,6 @@ export const PROJECTS: Project[] = [
     status: "complete",
     category: "robotics",
     year: "2024",
-    course:
-      "Intro to Design · Project 3: Robot Arm · Low Budget Engineering Squad",
     contributions: [
       "SolidWorks design of structural and gripper parts (claws, arm, holders, base, covers)",
       "Assembly drawing with BOM (CA78943) and rotating-assembly schematic (RA87634)",
@@ -299,7 +296,7 @@ export const PROJECTS: Project[] = [
       "A compact ~2×2 ft gait-cycle tester that rolls through heel strike, mid-stance, and toe-off — flywheel linkage, spring-assisted loading (~75 lb/in), Dorner conveyor, and multi-zone load cells for sole wear and load-transfer study.",
     description:
       "Commercial footwear testers are either crude vertical presses that miss the rolling contact of real walking, or full robotic gait labs that are too expensive for most engineering spaces. I designed a laboratory-scale shoe durability and quality testing machine that sits in an approximate 2 ft × 2 ft footprint while still reproducing the stance-phase sequence that actually wears a sole: heel strike → mid-stance peak → toe-off load transfer. The architecture is deliberately mechanical — a revolving linkage on a ~30 lb rotating flywheel converts motor rotation into repeated foot motion; when kinematics showed the flywheel mass alone could not hit human-scale walking forces (~165–195 lb), I sized a spring-assist pack to ~75 lb/in using Hooke’s law at ~50 rpm. The frame is AISI 1020 steel, checked in SolidWorks Simulation (beam model) under 150 lbf vertical + 22.5 lbf lateral: peak stress ~0.349 ksi, max deflection ~2.1×10⁻⁴ in, first natural frequency ~889 Hz vs. ~41.7 Hz motor drive — stiffness and resonance margin without guessing. A Dorner 2200-class low-profile conveyor carries the shoe under a foot mold instrumented with ~550 lbf compressive load cells at heel, mid-foot, and forefoot (HX711 24-bit ADC) so load progression across the stance phase is measurable, not assumed. Biomechanics drove every trade: literature on gait (Winter, Perry) and robotic footwear testers (Nguyen et al.) pushed the design away from “stamp and crush” and toward continuous directional load transfer on a compact, repeatable platform.",
-    role: "Mechanical design & analysis · ME executive design study",
+    role: "Mechanical design & analysis",
     tools: [
       "SolidWorks (assembly + Simulation FEA)",
       "Gait biomechanics (stance-phase loading)",
@@ -321,8 +318,6 @@ export const PROJECTS: Project[] = [
     status: "complete",
     category: "design",
     year: "2026",
-    course:
-      "Mechanical Engineering · Shoe Testing Machine · Dr. Amir Rezaei",
     contributionsLabel: "Design scope & analysis ownership",
     contributions: [
       "Problem framing — replace human-subject variability with a repeatable mechanical gait-cycle platform for sole wear and load distribution",
