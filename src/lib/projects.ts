@@ -23,7 +23,7 @@ export type Project = {
   tools: string[];
   outcomes: string[];
   status: ProjectStatus;
-  category: "design" | "robotics" | "industry";
+  category: "design" | "robotics";
   year: string;
   featured?: boolean;
   course?: string;
@@ -290,31 +290,6 @@ export const PROJECTS: Project[] = [
       },
     ],
   },
-  {
-    id: "acco-thermal-systems",
-    title: "Thermal & Fluid Systems Analysis",
-    summary:
-      "Industry internship applying the same drawing literacy and Excel-driven analysis used in my design projects — pressure losses, equipment selection, and field surveys.",
-    description:
-      "At ACCO Engineered Systems I put CAD/drawing instincts from projects like the heat-insert machine and Can Arm to work at scale: reading mechanical drawings and equipment schedules, calculating pressure losses across chilled- and hot-water pipe sections, and checking pump fit for 300–700 GPM design flows. I built an Excel VLOOKUP calculator to derate mini-split capacity by model, size, and line length, then presented it to 60+ teammates — the same “make the tool, prove it, hand it off” loop as coding a servo sequence or releasing a BOM. Job walks and FastDUCT takeoffs kept the analysis tied to real rooms and real duct.",
-    role: "Engineering Intern · ACCO Engineered Systems",
-    tools: [
-      "Excel (VLOOKUP)",
-      "FastDUCT",
-      "Mechanical drawings",
-      "Field surveys",
-      "Equipment research",
-    ],
-    outcomes: [
-      "Pressure-loss checks across 153 chilled- and hot-water pipe sections",
-      "Derating calculator presented to 60+ team members",
-      "Field data from 26 client job walks for scoping and estimating",
-      "Duct takeoffs supporting a multi-floor retrofit estimate",
-    ],
-    status: "complete",
-    category: "industry",
-    year: "2026",
-  },
 ];
 
 export const SKILL_GROUPS = [
@@ -363,5 +338,4 @@ export const SKILL_GROUPS = [
 export const CATEGORY_LABELS: Record<Project["category"], string> = {
   design: "Design / build",
   robotics: "Robotics",
-  industry: "Industry",
 };

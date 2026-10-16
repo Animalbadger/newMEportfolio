@@ -27,7 +27,7 @@ const name = displayName(PROFILE);
 export const metadata: Metadata = {
   title: `${name} — Mechanical Engineering Portfolio`,
   description:
-    "Interactive project portfolio for Zaid — mechanisms, thermal, structures, and automation work for employers and internship applications.",
+    "Interactive project portfolio for Zaid Alsalihi — mechanical design, robotics, and hands-on builds for employers and internship applications.",
   openGraph: {
     title: `${name} — Mechanical Engineering Portfolio`,
     description: PROFILE.tagline,
