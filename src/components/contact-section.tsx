@@ -35,9 +35,8 @@ export function ContactSection() {
           Get in touch
         </h2>
         <p className="mt-4 max-w-lg text-ink-muted">
-          This site is the portfolio link from the résumé. Reach out for
-          internships, co-ops, or project conversations — update contact details
-          in{" "}
+          Reach out for internships, co-ops, or project conversations. Update
+          email and social links in{" "}
           <code className="font-mono text-[13px] text-copper">
             src/lib/profile.ts
           </code>
