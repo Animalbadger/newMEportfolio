@@ -20,8 +20,8 @@ type LoadState = "loading" | "ready" | "error";
 const FILTERS: { id: Filter; label: string }[] = [
   { id: "all", label: "All" },
   { id: "design", label: CATEGORY_LABELS.design },
+  { id: "robotics", label: CATEGORY_LABELS.robotics },
   { id: "industry", label: CATEGORY_LABELS.industry },
-  { id: "aerospace", label: CATEGORY_LABELS.aerospace },
 ];
 
 const STATUS_LABEL: Record<ProjectStatus, string> = {
@@ -88,9 +88,9 @@ export function ProjectsSection() {
             Projects
           </h2>
           <p className="mt-3 max-w-lg text-ink-muted">
-            Three highlights for now — start with the ME 3250 heat-insert
-            machine, then industry and aerospace work. Expand a row for the full
-            story.
+            Three highlights for now — the heat-insert machine, the Can Arm
+            transfer robot, and industry analysis work. Expand a row for CAD,
+            drawings, and the full build story.
           </p>
         </div>
 

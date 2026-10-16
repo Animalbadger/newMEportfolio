@@ -17,7 +17,7 @@ export type Project = {
   tools: string[];
   outcomes: string[];
   status: ProjectStatus;
-  category: "design" | "industry" | "aerospace";
+  category: "design" | "robotics" | "industry";
   year: string;
   featured?: boolean;
   course?: string;
@@ -156,40 +156,150 @@ export const PROJECTS: Project[] = [
     pending: ["Demo videos of motion and insert placement"],
   },
   {
+    id: "can-arm",
+    title: "Can Arm — 3-DOF Transfer Robot",
+    summary:
+      "A servo-driven robotic arm that automatically picks and relocates cans — custom SolidWorks parts, geared gripper, and Arduino sequencing from CAD to bench.",
+    description:
+      "Built for Intro to Design (Project 3), the Can Arm is a compact 3-DOF manipulator that transfers objects (empty soda cans) through a fully programmed servo sequence — no hand-cranking, no potentiometer babysitting. I designed and fabricated the mechanical stack in SolidWorks: base and cover, arm and arm holder, rotating assembly with ball bearing, servo mounts, and a left/right claw pair closed by an MG995-driven gear mesh. COTS MG995 servos and an Arduino kit handled actuation and control; a variable DC supply fed the motors through a breadboard while the Arduino drove a repeatable open-loop trajectory (home → grasp → lift → rotate → place). The arm mounts to a 3D-printed base on a wooden plank for stiffness — the same shop instincts as my heat-insert gantry and internship drawing reviews: design for printability, document with BOM/schematics, then iterate until the sequence hits every time.",
+    role: "Design & build · Intro to Design Project 3",
+    tools: [
+      "SolidWorks (parts, assembly, drawings)",
+      "FDM 3D printing (PLA)",
+      "MG995 high-torque servos",
+      "Arduino sequencing",
+      "Geared end-effector design",
+      "DC bench supply & breadboard wiring",
+    ],
+    outcomes: [
+      "Full Can Arm Assembly with BOM — base, arm, rotating assembly, claws, covers",
+      "Part drawings for claws, arm, holders, base, and servo attachments (mm detailing)",
+      "3-DOF architecture sized to the transfer task (base rotate, shoulder extend, claw close)",
+      "Motor-driven geared gripper reliable on cylindrical cans",
+      "Automated Arduino sequence that homes, manipulates, and places without manual inputs",
+      "Stable wooden-plank mount for weight-bearing during demos",
+    ],
+    status: "complete",
+    category: "robotics",
+    year: "2024",
+    course:
+      "Intro to Design · Project 3: Robot Arm · Low Budget Engineering Squad",
+    contributions: [
+      "SolidWorks design of structural and gripper parts (claws, arm, holders, base, covers)",
+      "Assembly drawing with BOM (CA78943) and rotating-assembly schematic (RA87634)",
+      "Detail drawings for right/left claw, arm, arm holder, servo holder, base cover",
+      "Physical build — print, assemble MG995 stack, zip-tie cable management, bench bring-up",
+      "Mechatronics integration — Arduino signal lines, DC supply to servos, scripted transfer path",
+    ],
+    process: [
+      "Requirements — automate can transfer with a low-budget team; choose 3 DOF so the mechanism stays simple without sacrificing the task.",
+      "Architecture — custom printed structure + COTS MG995s and Arduino; claw gear train for synchronized grasp on cylinders.",
+      "CAD — model base (BA 23899), arm (AR36749), arm holder (AH76293), rotating assembly (RA87634), left/right claws (LC35489 / RC47890), covers and servo attachments.",
+      "Documentation — Can Arm Assembly sheet with section views + BOM; individual part drawings with mm dimensions and section callouts for print/fab.",
+      "Fabrication — FDM-print structural parts; integrate three MG995s with horns; add ball bearing in the rotating assembly for smoother yaw.",
+      "Controls — scrap flaky potentiometer teleop; hard-code a servo angle sequence that homes, closes the claw, lifts, rotates the base, and places the can.",
+      "Integration — power servos from a bench DC supply (~6.5 V) via breadboard; Arduino handles PWM; mount the base to a wooden plank for demo stability.",
+      "Validation — repeat the transfer sequence until placement is consistent; iterate zip-ties, mounts, and claw mesh for reliability.",
+    ],
+    images: [
+      {
+        src: "/photos/can-arm/assembly-bom.png",
+        alt: "SolidWorks Can Arm Assembly drawing with section view and bill of materials",
+        caption: "Can Arm Assembly — section B-B + BOM (CA78943)",
+        kind: "drawing",
+      },
+      {
+        src: "/photos/can-arm/drawing-rotating-assem.png",
+        alt: "SolidWorks rotating assembly drawing with claw and servo BOM",
+        caption: "Rotating assembly schematic — claws, bearing, MG995",
+        kind: "drawing",
+      },
+      {
+        src: "/photos/can-arm/drawing-right-claw.png",
+        alt: "Detailed SolidWorks drawing of the right claw part",
+        caption: "Right claw detail drawing (RC47890)",
+        kind: "drawing",
+      },
+      {
+        src: "/photos/can-arm/drawing-left-claw.png",
+        alt: "Detailed SolidWorks drawing of the left claw part",
+        caption: "Left claw detail drawing (LC35489)",
+        kind: "drawing",
+      },
+      {
+        src: "/photos/can-arm/drawing-arm.png",
+        alt: "SolidWorks drawing of the robotic arm link",
+        caption: "Arm link drawing (AR36749)",
+        kind: "drawing",
+      },
+      {
+        src: "/photos/can-arm/drawing-arm-holder.png",
+        alt: "SolidWorks drawing of the arm holder",
+        caption: "Arm holder drawing (AH76293)",
+        kind: "drawing",
+      },
+      {
+        src: "/photos/can-arm/drawing-servo-holder.png",
+        alt: "SolidWorks drawing of the rotating servo holder with section view",
+        caption: "Rotating servo holder (RH76447)",
+        kind: "drawing",
+      },
+      {
+        src: "/photos/can-arm/drawing-base-cover.png",
+        alt: "SolidWorks drawing of the base cover",
+        caption: "Base cover drawing (BC12777)",
+        kind: "drawing",
+      },
+      {
+        src: "/photos/can-arm/photo-gripper-close.jpg",
+        alt: "Close-up of the geared claw gripper and MG995 servo on the Can Arm",
+        caption: "Geared claw + MG995 — end-effector close-up",
+        kind: "photo",
+      },
+      {
+        src: "/photos/can-arm/photo-gripper-scale.jpg",
+        alt: "Can Arm gripper next to a hand for scale on the workbench",
+        caption: "Gripper scale check on the bench",
+        kind: "photo",
+      },
+      {
+        src: "/photos/can-arm/photo-full-setup.png",
+        alt: "Full Can Arm setup with Arduino, breadboard, and DC power supply",
+        caption: "Full setup — arm, Arduino, breadboard, bench supply",
+        kind: "photo",
+      },
+      {
+        src: "/photos/can-arm/photo-bench-setup.png",
+        alt: "Can Arm on wooden base during powered testing",
+        caption: "Powered test on wooden base mount",
+        kind: "photo",
+      },
+    ],
+  },
+  {
     id: "acco-thermal-systems",
     title: "Thermal & Fluid Systems Analysis",
     summary:
-      "Pipe pressure-loss checks, equipment comparison tools, and field surveys supporting mechanical system design decisions in industry.",
+      "Industry internship applying the same drawing literacy and Excel-driven analysis used in my design projects — pressure losses, equipment selection, and field surveys.",
     description:
-      "As an engineering intern at ACCO Engineered Systems, I analyzed mechanical drawings and equipment schedules to calculate pressure losses across chilled- and hot-water pipe sections and check pump suitability for design flows. I compared manufacturer data across major equipment brands, built an Excel calculator for capacity derating by model, size, and line length, and presented the tool to the team. Field work included documenting existing equipment and room dimensions on client job walks, plus duct takeoffs for a facility retrofit estimate.",
+      "At ACCO Engineered Systems I put CAD/drawing instincts from projects like the heat-insert machine and Can Arm to work at scale: reading mechanical drawings and equipment schedules, calculating pressure losses across chilled- and hot-water pipe sections, and checking pump fit for 300–700 GPM design flows. I built an Excel VLOOKUP calculator to derate mini-split capacity by model, size, and line length, then presented it to 60+ teammates — the same “make the tool, prove it, hand it off” loop as coding a servo sequence or releasing a BOM. Job walks and FastDUCT takeoffs kept the analysis tied to real rooms and real duct.",
     role: "Engineering Intern · ACCO Engineered Systems",
-    tools: ["Excel (VLOOKUP)", "FastDUCT", "Mechanical drawings", "Field surveys"],
+    tools: [
+      "Excel (VLOOKUP)",
+      "FastDUCT",
+      "Mechanical drawings",
+      "Field surveys",
+      "Equipment research",
+    ],
     outcomes: [
-      "Pressure-loss checks across 153 chilled- and hot-water pipe sections (300–700 GPM)",
-      "Equipment derating calculator presented to 60+ team members",
+      "Pressure-loss checks across 153 chilled- and hot-water pipe sections",
+      "Derating calculator presented to 60+ team members",
       "Field data from 26 client job walks for scoping and estimating",
+      "Duct takeoffs supporting a multi-floor retrofit estimate",
     ],
     status: "complete",
     category: "industry",
     year: "2026",
-  },
-  {
-    id: "flying-broncos-aero",
-    title: "Flying Broncos — Aerodynamics Lead",
-    summary:
-      "Led a small aero team evaluating airfoils and wing geometries in XFLR5 for Cal Poly Pomona’s aircraft design effort.",
-    description:
-      "As Aerodynamics Lead for the Flying Broncos, I led three engineering students using XFLR5 to evaluate lift, drag, and stability across airfoils and wing geometries. We worked with structural, controls, and payload teams to iterate the design and improve performance between design cycles.",
-    role: "Aerodynamics Lead · Cal Poly Pomona",
-    tools: ["XFLR5", "Airfoil analysis", "Team leadership"],
-    outcomes: [
-      "Led a three-student aerodynamics team",
-      "Contributed to a 12% drag reduction between design iterations",
-      "Cross-team coordination with structures, controls, and payload",
-    ],
-    status: "complete",
-    category: "aerospace",
-    year: "2024–25",
   },
 ];
 
@@ -197,11 +307,11 @@ export const SKILL_GROUPS = [
   {
     title: "Design & CAD",
     items: [
-      "SolidWorks",
-      "GD&T & drawings",
-      "AutoCAD",
-      "Revit",
-      "3D printing & prototyping",
+      "SolidWorks (parts, assemblies, drawings)",
+      "GD&T & manufacturing drawings",
+      "BOM & assembly schematics",
+      "AutoCAD / Revit",
+      "Design for 3D printing",
     ],
   },
   {
@@ -210,34 +320,34 @@ export const SKILL_GROUPS = [
       "Thermal & fluid calculations",
       "Aerodynamics (XFLR5)",
       "MATLAB",
-      "Excel modeling",
+      "Excel modeling (VLOOKUP)",
       "Equipment & data comparison",
     ],
   },
   {
-    title: "Make & field",
+    title: "Make & mechatronics",
     items: [
-      "Machine design & assembly",
+      "Machine design & gantry builds",
+      "Servo / stepper integration",
+      "Arduino sequencing",
       "Linear motion systems",
-      "Shop & lab builds",
-      "Field surveys & job walks",
-      "Mechanical drawings",
+      "Shop fabrication & bring-up",
     ],
   },
   {
     title: "Collaboration",
     items: [
-      "Project coordination",
+      "Project coordination & RFIs",
       "Technical presentations",
       "Team leadership",
+      "Field surveys & job walks",
       "Cross-discipline teamwork",
-      "Vendor & client meetings",
     ],
   },
 ] as const;
 
 export const CATEGORY_LABELS: Record<Project["category"], string> = {
   design: "Design / build",
+  robotics: "Robotics",
   industry: "Industry",
-  aerospace: "Aerospace",
 };
