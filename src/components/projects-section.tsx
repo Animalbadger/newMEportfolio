@@ -18,10 +18,10 @@ type LoadState = "loading" | "ready" | "error";
 
 const FILTERS: { id: Filter; label: string }[] = [
   { id: "all", label: "All" },
-  { id: "hvac", label: CATEGORY_LABELS.hvac },
-  { id: "construction", label: CATEGORY_LABELS.construction },
+  { id: "industry", label: CATEGORY_LABELS.industry },
   { id: "aerospace", label: CATEGORY_LABELS.aerospace },
-  { id: "leadership", label: CATEGORY_LABELS.leadership },
+  { id: "robotics", label: CATEGORY_LABELS.robotics },
+  { id: "campus", label: CATEGORY_LABELS.campus },
 ];
 
 const STATUS_LABEL: Record<ProjectStatus, string> = {
@@ -88,8 +88,8 @@ export function ProjectsSection() {
             Projects
           </h2>
             <p className="mt-3 max-w-lg text-ink-muted">
-            Internships, research, and leadership from the résumé — filter by
-            area and expand a row for detail.
+            Selected work across industry, aerospace, robotics, and campus
+            leadership — filter by area and expand a row for detail.
           </p>
         </div>
 

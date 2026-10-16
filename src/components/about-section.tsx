@@ -75,7 +75,7 @@ export function AboutSection() {
           <p className="max-w-[10rem] font-mono text-[10px] uppercase tracking-[0.16em] text-ink-faint lg:text-right">
             {name}
             <br />
-            Mechanical engineering
+            Open to all ME fields
           </p>
         </aside>
       </div>

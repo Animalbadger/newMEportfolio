@@ -37,8 +37,8 @@ export function ContactSection() {
           Get in touch
         </h2>
         <p className="mt-4 max-w-lg text-ink-muted">
-          Open to mechanical engineering internships and full-time roles —
-          especially building systems, design, and field-facing work.
+          Open to mechanical engineering internships and full-time roles across
+          design, analysis, manufacturing, aerospace, and related fields.
         </p>
 
         <div className="mt-10 flex flex-wrap gap-3">

@@ -9,47 +9,47 @@ export type Project = {
   tools: string[];
   outcomes: string[];
   status: ProjectStatus;
-  category: "hvac" | "construction" | "aerospace" | "leadership";
+  category: "industry" | "aerospace" | "robotics" | "campus";
   year: string;
 };
 
 export const PROJECTS: Project[] = [
   {
-    id: "acco-hvac-analysis",
-    title: "HVAC Systems Design & Analysis",
+    id: "acco-thermal-systems",
+    title: "Thermal & Fluid Systems Analysis",
     summary:
-      "Pressure-loss analysis, mini-split capacity tools, and field surveys supporting HVAC scoping and cost estimates at ACCO Engineered Systems.",
+      "Pipe pressure-loss checks, equipment comparison tools, and field surveys supporting mechanical system design decisions in industry.",
     description:
-      "As an engineering intern at ACCO Engineered Systems, I analyzed mechanical drawings and equipment schedules to calculate pressure losses across chilled- and hot-water pipe sections and check pump suitability for design flows. I compared manufacturer data for LG, Daikin, and Mitsubishi mini-splits, built an Excel VLOOKUP calculator for capacity derating by model, size, and line length, and presented the tool to the team. Field work included documenting existing HVAC equipment and room dimensions on client job walks, plus FastDUCT takeoffs for a public-health facility ductwork retrofit.",
+      "As an engineering intern at ACCO Engineered Systems, I analyzed mechanical drawings and equipment schedules to calculate pressure losses across chilled- and hot-water pipe sections and check pump suitability for design flows. I compared manufacturer data across major equipment brands, built an Excel calculator for capacity derating by model, size, and line length, and presented the tool to the team. Field work included documenting existing equipment and room dimensions on client job walks, plus duct takeoffs for a facility retrofit estimate.",
     role: "Engineering Intern · ACCO Engineered Systems",
-    tools: ["FastDUCT", "Excel (VLOOKUP)", "Mechanical drawings", "Field surveys"],
+    tools: ["Excel (VLOOKUP)", "FastDUCT", "Mechanical drawings", "Field surveys"],
     outcomes: [
       "Pressure-loss checks across 153 chilled- and hot-water pipe sections (300–700 GPM)",
-      "Mini-split derating calculator presented to 60+ team members",
+      "Equipment derating calculator presented to 60+ team members",
       "Field data from 26 client job walks for scoping and estimating",
-      "Duct takeoffs across two floors of a public health facility",
+      "Duct takeoffs across two floors of a public facility",
     ],
     status: "complete",
-    category: "hvac",
+    category: "industry",
     year: "2026",
   },
   {
     id: "murray-project-coordination",
-    title: "Mechanical Construction Coordination",
+    title: "Mechanical Project Coordination",
     summary:
-      "Vendor coordination, drawing markups, and permitting training on water-treatment and City of Los Angeles projects at Murray Company.",
+      "Vendor coordination, drawing markups, and team training on large mechanical installations and public infrastructure work.",
     description:
-      "As an operations intern at Murray Company Mechanical Contractors, I coordinated with vendors and joined job walks and weekly client meetings to verify installation requirements for critical equipment at the Hyperion Water Treatment Plant. I reviewed and marked up City of Los Angeles Bureau of Engineering drawings on projects valued at $100K–$300K, prepared weekly coordination documents (RFIs, PTWOs, submittals, Special Plant Accommodations, proposals), and presented City of Los Angeles permitting training to 100+ employees.",
+      "As an operations intern at Murray Company Mechanical Contractors, I coordinated with vendors and joined job walks and weekly client meetings to verify installation requirements for critical equipment at the Hyperion Water Treatment Plant. I reviewed and marked up engineering drawings on projects valued at $100K–$300K, prepared weekly coordination documents (RFIs, work orders, submittals, proposals), and presented permitting-process training to 100+ employees.",
     role: "Operations Intern · Murray Company",
     tools: ["Bluebeam", "Drawing review", "RFIs & submittals", "Job walks"],
     outcomes: [
-      "Supported critical equipment installs at Hyperion Water Treatment Plant",
-      "Flagged design issues on $100K–$300K City of LA projects",
+      "Supported critical equipment installs at a major water treatment plant",
+      "Flagged design issues on $100K–$300K public projects",
       "At least four coordination documents prepared per week",
-      "Permitting training delivered to 100+ staff, including leadership",
+      "Technical training delivered to 100+ staff, including leadership",
     ],
     status: "complete",
-    category: "construction",
+    category: "industry",
     year: "2025",
   },
   {
@@ -85,14 +85,14 @@ export const PROJECTS: Project[] = [
       "Hands-on sensor integration and testing",
     ],
     status: "complete",
-    category: "aerospace",
+    category: "robotics",
     year: "2022",
   },
   {
     id: "engineering-society",
     title: "Cypress College Engineering Society",
     summary:
-      "Co-founded the student engineering society — AutoCAD tutorials, 3D-printing competitions, and community events.",
+      "Co-founded the student engineering society — CAD tutorials, 3D-printing competitions, and community events.",
     description:
       "I co-founded the engineering society at Cypress College to give students a place to learn practical tools and build together. We ran AutoCAD tutorials, 3D-printing design competitions, and student events that lowered the barrier to joining engineering culture on campus.",
     role: "Co-Founder",
@@ -103,57 +103,57 @@ export const PROJECTS: Project[] = [
       "Built a lasting peer-learning community",
     ],
     status: "complete",
-    category: "leadership",
+    category: "campus",
     year: "2022",
   },
 ];
 
 export const SKILL_GROUPS = [
   {
-    title: "Engineering",
-    items: [
-      "HVAC pressure-loss calculations",
-      "Ductwork takeoffs & FastDUCT",
-      "Mechanical drawings & equipment research",
-      "Field surveys & job walks",
-      "Aerodynamics analysis (XFLR5)",
-    ],
-  },
-  {
-    title: "Software & CAD",
+    title: "Design & CAD",
     items: [
       "SolidWorks",
-      "AutoCAD & Revit",
-      "Bluebeam",
-      "Microsoft Excel (VLOOKUP)",
+      "AutoCAD",
+      "Revit",
+      "Bluebeam markups",
+      "3D printing & prototyping",
+    ],
+  },
+  {
+    title: "Analysis",
+    items: [
+      "Thermal & fluid calculations",
+      "Aerodynamics (XFLR5)",
       "MATLAB",
+      "Excel modeling (VLOOKUP)",
+      "Equipment & data comparison",
     ],
   },
   {
-    title: "Project delivery",
+    title: "Make & field",
     items: [
-      "RFIs, submittals & coordination docs",
-      "Cost estimating support",
+      "Shop & lab builds",
+      "Field surveys & job walks",
+      "Mechanical drawings",
+      "Duct / system takeoffs",
+      "Sensor integration",
+    ],
+  },
+  {
+    title: "Collaboration",
+    items: [
+      "Project coordination docs",
       "Vendor & client meetings",
-      "Permitting process (City of LA)",
-      "Gantt charts & risk tracking",
-    ],
-  },
-  {
-    title: "Leadership",
-    items: [
-      "Aerodynamics team lead",
-      "Society co-founder",
-      "Technical training & presentations",
-      "MEP / NSF Bridge Program",
-      "Cross-functional collaboration",
+      "Technical presentations",
+      "Team leadership",
+      "Cross-discipline teamwork",
     ],
   },
 ] as const;
 
 export const CATEGORY_LABELS: Record<Project["category"], string> = {
-  hvac: "HVAC / MEP",
-  construction: "Construction",
+  industry: "Industry",
   aerospace: "Aerospace",
-  leadership: "Leadership",
+  robotics: "Robotics",
+  campus: "Campus",
 };
