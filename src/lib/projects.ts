@@ -4,8 +4,8 @@ export type ProjectImage = {
   src: string;
   alt: string;
   caption: string;
-  /** cad / drawing get a bit more room in the gallery */
-  kind?: "cad" | "drawing" | "photo";
+  /** cad / drawing / analysis get a bit more room in the gallery */
+  kind?: "cad" | "drawing" | "analysis" | "photo";
 };
 
 export type ProjectVideo = {
@@ -29,6 +29,8 @@ export type Project = {
   course?: string;
   process?: string[];
   contributions?: string[];
+  /** Override the contributions section heading (default: What I established & built) */
+  contributionsLabel?: string;
   images?: ProjectImage[];
   videos?: ProjectVideo[];
   pending?: string[];
@@ -290,6 +292,120 @@ export const PROJECTS: Project[] = [
       },
     ],
   },
+  {
+    id: "shoe-tester",
+    title: "Shoe Durability & Quality Testing Machine",
+    summary:
+      "A compact ~2×2 ft gait-cycle tester that rolls through heel strike, mid-stance, and toe-off — flywheel linkage, spring-assisted loading (~75 lb/in), Dorner conveyor, and multi-zone load cells for sole wear and load-transfer study.",
+    description:
+      "Commercial footwear testers are either crude vertical presses that miss the rolling contact of real walking, or full robotic gait labs that are too expensive for most engineering spaces. I designed a laboratory-scale shoe durability and quality testing machine that sits in an approximate 2 ft × 2 ft footprint while still reproducing the stance-phase sequence that actually wears a sole: heel strike → mid-stance peak → toe-off load transfer. The architecture is deliberately mechanical — a revolving linkage on a ~30 lb rotating flywheel converts motor rotation into repeated foot motion; when kinematics showed the flywheel mass alone could not hit human-scale walking forces (~165–195 lb), I sized a spring-assist pack to ~75 lb/in using Hooke’s law at ~50 rpm. The frame is AISI 1020 steel, checked in SolidWorks Simulation (beam model) under 150 lbf vertical + 22.5 lbf lateral: peak stress ~0.349 ksi, max deflection ~2.1×10⁻⁴ in, first natural frequency ~889 Hz vs. ~41.7 Hz motor drive — stiffness and resonance margin without guessing. A Dorner 2200-class low-profile conveyor carries the shoe under a foot mold instrumented with ~550 lbf compressive load cells at heel, mid-foot, and forefoot (HX711 24-bit ADC) so load progression across the stance phase is measurable, not assumed. Biomechanics drove every trade: literature on gait (Winter, Perry) and robotic footwear testers (Nguyen et al.) pushed the design away from “stamp and crush” and toward continuous directional load transfer on a compact, repeatable platform.",
+    role: "Mechanical design & analysis · ME executive design study",
+    tools: [
+      "SolidWorks (assembly + Simulation FEA)",
+      "Gait biomechanics (stance-phase loading)",
+      "Linkage / flywheel kinematics",
+      "Spring design (Hooke’s law · ~75 lb/in)",
+      "Impulse-momentum impact estimates",
+      "Dorner 2200 conveyor selection",
+      "Load cells · HX711 24-bit ADC",
+      "Cost & motor sizing trade studies",
+    ],
+    outcomes: [
+      "Full CAD assembly of frame, flywheel linkage, foot mold, and conveyor integration in a ~2×2 ft lab footprint",
+      "Spring system sized to ~75 lb/in (≈2 in OD, 1 in ID, 3 in free length, 0.14 in wire) to reach ~165–195 lb walking loads at ~50 rpm",
+      "Frame FEA on AISI 1020 — ~0.349 ksi peak stress, ~2.1×10⁻⁴ in deflection, ~889 Hz first mode vs. ~42 Hz drive",
+      "Heel-strike impact estimate ~534 lbf and friction ~176 lbf (μ≈0.33) to size conveyor contact loads for a 143 lb reference body weight",
+      "Multi-zone load-cell layout (heel / mid-foot / forefoot) with ~550 lbf cells and HX711 readout for stance-phase load transfer",
+      "Subsystem cost breakdown showing a path well below commercial robotic gait simulators",
+    ],
+    status: "complete",
+    category: "design",
+    year: "2026",
+    course:
+      "Mechanical Engineering · Shoe Testing Machine · Dr. Amir Rezaei",
+    contributionsLabel: "Design scope & analysis ownership",
+    contributions: [
+      "Problem framing — replace human-subject variability with a repeatable mechanical gait-cycle platform for sole wear and load distribution",
+      "Mechanism architecture — revolving linkage + flywheel (~30 lb rotating assembly) for heel-strike → mid-stance → toe-off motion, not vertical stamping",
+      "Spring-assist sizing — free-body / Hooke’s-law work when flywheel inertia alone under-delivered human walking force",
+      "Structural FEA — AISI 1020 beam-element frame under operating vertical/lateral loads; vibration screen vs. motor frequency",
+      "Conveyor & instrumentation — Dorner 2200-class treadmill path; foot-mold load cells + HX711 for plantar load progression",
+      "Impact / friction calculations and costed BOM-level trade study for motors, bearings, springs, sensors, and structure",
+    ],
+    process: [
+      "Biomechanics first — map the stance phase (heel strike, mid-stance peak, toe-off) from gait literature; reject pure compression presses because they miss rolling contact and forefoot load transfer.",
+      "Benchmark the field — study commercial presses vs. expensive robotic gait simulators (Nguyen et al.); aim for a simplified but mechanically honest tester that a lab can actually house and afford.",
+      "Mechanism choice — revolving linkage on a flywheel so continuous rotation becomes repeated downward/forward foot motion; estimate ~30 lb rotating mass and run Newton’s-law / kinematic checks at ~50 rpm.",
+      "Force gap → springs — rotating assembly alone cannot hit ~165–195 lb walking loads; size a spring pack to ~75 lb/in (2 in OD / 1 in ID / 3 in free / 0.14 in wire) so assist force fills the gap without industrial servos.",
+      "Frame stiffness — SolidWorks Simulation beam model in AISI 1020; apply 150 lbf vertical + 22.5 lbf lateral; confirm tiny stress/deflection and first natural frequency (~889 Hz) far above motor frequency (~41.7 Hz).",
+      "Treadmill path — select Dorner 2200-class low-profile conveyor for a tight 2×2 ft envelope; size contact from gait curve (~1.2× BW heel strike ≈172 lb on 143 lb BW) plus impulse impact (~534 lbf) and friction (~176 lbf at μ=0.33).",
+      "Sense the sole — foot mold with compressive load cells (~550 lbf, ±0.276 lb class accuracy) at heel, mid-foot, and forefoot; HX711 24-bit ADC so stance-phase load migration is a measured trend, not a sketch.",
+      "Motors & cost — DC drive sized for ~50 rpm under load (torque vs. packaging vs. industrial servo cost); subsystem cost table keeps the architecture cheaper than robotic gait labs while staying mechanically complete.",
+      "Design closure — lock CAD assembly (frame + linkage + mold + conveyor), document FEA/spring/gait tables, and leave a clear path for adjustable weight brackets, conveyor tracking calibration, and closed-loop motor control.",
+    ],
+    images: [
+      {
+        src: "/photos/shoe-tester/fig-cad-assembly.png",
+        alt: "SolidWorks CAD assembly of the shoe testing machine with frame, conveyor, linkage, and foot mold",
+        caption: "Final CAD assembly — frame, conveyor, linkage, foot mold",
+        kind: "cad",
+      },
+      {
+        src: "/photos/shoe-tester/fig-linkage-flywheel.png",
+        alt: "Revolving linkage and flywheel mechanism that converts rotation into gait-cycle foot motion",
+        caption: "Revolving linkage + flywheel — rotation → gait motion",
+        kind: "cad",
+      },
+      {
+        src: "/photos/shoe-tester/fig-conveyor.png",
+        alt: "Conveyor and treadmill layout based on a Dorner 2200-class platform",
+        caption: "Dorner 2200-class conveyor / treadmill layout",
+        kind: "cad",
+      },
+      {
+        src: "/photos/shoe-tester/fig-foot-loadcells.png",
+        alt: "Foot mold geometry with load-cell placement at heel, mid-foot, and forefoot",
+        caption: "Foot mold — load cells at heel, mid-foot, forefoot",
+        kind: "cad",
+      },
+      {
+        src: "/photos/shoe-tester/fig-frame-fea.png",
+        alt: "SolidWorks Simulation structural frame analysis showing stress and displacement on AISI 1020 steel",
+        caption: "Frame FEA — AISI 1020, ~0.349 ksi / ~2.1e-4 in",
+        kind: "analysis",
+      },
+      {
+        src: "/photos/shoe-tester/fig-spring-model.png",
+        alt: "Simplified mass-spring free-body model of the shoe testing mechanism",
+        caption: "Spring / FBD model — dynamic loading assist",
+        kind: "analysis",
+      },
+      {
+        src: "/photos/shoe-tester/fig-gait-load-curve.png",
+        alt: "Estimated gait-cycle loading curve including heel strike, mid-stance, and toe-off",
+        caption: "Gait-cycle load curve — heel strike → toe-off",
+        kind: "analysis",
+      },
+      {
+        src: "/photos/shoe-tester/table-walking-loads.png",
+        alt: "Table of estimated walking load conditions across gait phases",
+        caption: "Table — estimated walking load conditions",
+        kind: "analysis",
+      },
+      {
+        src: "/photos/shoe-tester/table-spring.png",
+        alt: "Table of selected spring design parameters and stiffness",
+        caption: "Table — spring design parameters (~75 lb/in)",
+        kind: "analysis",
+      },
+      {
+        src: "/photos/shoe-tester/table-cost.png",
+        alt: "Cost analysis and component breakdown table for the shoe testing machine",
+        caption: "Table — cost / component breakdown",
+        kind: "analysis",
+      },
+    ],
+  },
 ];
 
 export const SKILL_GROUPS = [
@@ -306,6 +422,8 @@ export const SKILL_GROUPS = [
   {
     title: "Analysis",
     items: [
+      "SolidWorks Simulation (FEA)",
+      "Linkage / spring / impact sizing",
       "Thermal & fluid calculations",
       "Aerodynamics (XFLR5)",
       "MATLAB",

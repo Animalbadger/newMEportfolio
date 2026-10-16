@@ -271,18 +271,24 @@ function ProjectRow({
 
             {project.images && project.images.length > 0 && (
               <div className="space-y-8">
-                {(["cad", "drawing", "photo"] as const).map((kind) => {
+                {(
+                  ["cad", "drawing", "analysis", "photo"] as const
+                ).map((kind) => {
                   const group = project.images!.filter(
                     (img) => (img.kind ?? "photo") === kind,
                   );
                   if (group.length === 0) return null;
                   const title =
                     kind === "cad"
-                      ? "CAD & exploded views"
+                      ? "CAD & mechanism views"
                       : kind === "drawing"
                         ? "Manufacturing drawings"
-                        : "Build photos";
+                        : kind === "analysis"
+                          ? "Analysis, FEA & data"
+                          : "Build photos";
                   const wide = kind !== "photo";
+                  const contain =
+                    kind === "drawing" || kind === "analysis";
                   return (
                     <div key={kind}>
                       <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-ink-faint">
@@ -301,7 +307,11 @@ function ProjectRow({
                             key={image.src}
                             className={cn(
                               kind === "cad" &&
-                                image.src.includes("toolhead-exploded") &&
+                                (image.src.includes("toolhead-exploded") ||
+                                  image.src.includes("fig-cad-assembly")) &&
+                                "sm:col-span-2",
+                              kind === "analysis" &&
+                                image.src.includes("fig-frame-fea") &&
                                 "sm:col-span-2",
                               kind === "drawing" && "sm:col-span-1 lg:col-span-1",
                             )}
@@ -310,7 +320,7 @@ function ProjectRow({
                               <div
                                 className={cn(
                                   "relative overflow-hidden rounded-md bg-white ring-1 ring-ink/10",
-                                  kind === "drawing"
+                                  kind === "drawing" || kind === "analysis"
                                     ? "aspect-[4/3]"
                                     : kind === "cad"
                                       ? "aspect-[16/10]"
@@ -327,7 +337,7 @@ function ProjectRow({
                                       : "(max-width: 640px) 45vw, 200px"
                                   }
                                   className={cn(
-                                    kind === "drawing"
+                                    contain
                                       ? "object-contain p-2"
                                       : "object-cover",
                                   )}
@@ -349,7 +359,8 @@ function ProjectRow({
             {project.contributions && project.contributions.length > 0 && (
               <div>
                 <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-ink-faint">
-                  What I established & built
+                  {project.contributionsLabel ??
+                    "What I established & built"}
                 </p>
                 <ul className="mt-3 max-w-2xl space-y-2 text-sm text-ink-muted">
                   {project.contributions.map((item) => (
