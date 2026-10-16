@@ -4,6 +4,8 @@ export type ProjectImage = {
   src: string;
   alt: string;
   caption: string;
+  /** cad / drawing get a bit more room in the gallery */
+  kind?: "cad" | "drawing" | "photo";
 };
 
 export type Project = {
@@ -73,35 +75,85 @@ export const PROJECTS: Project[] = [
     ],
     images: [
       {
+        src: "/photos/heat-insert/toolhead-exploded.png",
+        alt: "Exploded SolidWorks view of the heated toolhead and clamp assembly",
+        caption: "Exploded toolhead & clamp assembly — SolidWorks",
+        kind: "cad",
+      },
+      {
+        src: "/photos/heat-insert/x-axis-exploded.png",
+        alt: "Exploded CAD of belt-driven X-axis with linear rail and NEMA 17",
+        caption: "X-axis exploded — belt, rail, pulleys, stepper",
+        kind: "cad",
+      },
+      {
+        src: "/photos/heat-insert/z-axis-exploded.png",
+        alt: "Exploded CAD of lead-screw Z-axis linear actuator",
+        caption: "Z-axis exploded — lead screw, rail, motor",
+        kind: "cad",
+      },
+      {
+        src: "/photos/heat-insert/z-axis-detail.png",
+        alt: "Detailed CAD close-up of Z-axis lead screw, coupler, and linear rail",
+        caption: "Z-axis detail — coupler, lead screw, carriage",
+        kind: "cad",
+      },
+      {
+        src: "/photos/heat-insert/cad-vs-build.png",
+        alt: "Side-by-side physical prototype and color CAD assembly of the machine",
+        caption: "CAD assembly vs. physical build",
+        kind: "cad",
+      },
+      {
+        src: "/photos/heat-insert/toolhead-assembly.png",
+        alt: "SolidWorks render of the assembled heated toolhead",
+        caption: "Toolhead assembly render",
+        kind: "cad",
+      },
+      {
+        src: "/photos/heat-insert/sensor-housing.png",
+        alt: "CAD of camera and sensor housings on the gantry rail",
+        caption: "Sensor / camera housing mounts",
+        kind: "cad",
+      },
+      {
+        src: "/photos/heat-insert/drawing-base-plate.png",
+        alt: "SolidWorks manufacturing drawing of the 12 by 12 inch aluminum base plate by Zaid A.",
+        caption: "Base plate drawing — 6061-T651, M5 taps, GD&T (Zaid A.)",
+        kind: "drawing",
+      },
+      {
+        src: "/photos/heat-insert/drawing-bed-plate.png",
+        alt: "SolidWorks drawing of the 8 by 8 inch stainless steel bed plate with reamed hole patterns",
+        caption: "Bed plate steel drawing — reamed insert staging holes",
+        kind: "drawing",
+      },
+      {
         src: "/photos/heat-insert/gantry-assembled.jpg",
         alt: "Assembled three-axis heat-insert machine on aluminum base",
-        caption: "Assembled gantry on the aluminum base plate",
-      },
-      {
-        src: "/photos/heat-insert/base-gantry.png",
-        alt: "Base plate with Y-axis rods and vertical gantry column",
-        caption: "Base, Y-axis rods, and Z-column during build",
-      },
-      {
-        src: "/photos/heat-insert/assembly-wiring.jpg",
-        alt: "Machine during assembly with stepper drivers and linear stages",
-        caption: "Shop assembly — motion hardware and drivers laid out",
+        caption: "Assembled gantry on the aluminum base",
+        kind: "photo",
       },
       {
         src: "/photos/heat-insert/toolhead-test.png",
         alt: "Heated toolhead positioned over a 3D-printed part on the bed",
-        caption: "Toolhead over a printed part on the work bed",
+        caption: "Toolhead over a printed part on the bed",
+        kind: "photo",
+      },
+      {
+        src: "/photos/heat-insert/assembly-wiring.jpg",
+        alt: "Machine during assembly with stepper drivers and linear stages",
+        caption: "Shop assembly — motion hardware laid out",
+        kind: "photo",
       },
       {
         src: "/photos/zaid-workshop.jpg",
         alt: "Zaid observing the heat-insert machine on the workbench",
-        caption: "At the bench with the running prototype",
+        caption: "At the bench with the prototype",
+        kind: "photo",
       },
     ],
-    pending: [
-      "CAD / GD&T drawing snips from the report (send when ready)",
-      "Demo videos of motion and insert placement",
-    ],
+    pending: ["Demo videos of motion and insert placement"],
   },
   {
     id: "acco-thermal-systems",

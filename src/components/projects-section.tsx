@@ -240,30 +240,79 @@ function ProjectRow({
             </p>
 
             {project.images && project.images.length > 0 && (
-              <div>
-                <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-ink-faint">
-                  Build photos
-                </p>
-                <ul className="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
-                  {project.images.map((image) => (
-                    <li key={image.src}>
-                      <figure className="space-y-1.5">
-                        <div className="relative aspect-[4/3] overflow-hidden rounded-md ring-1 ring-ink/10">
-                          <Image
-                            src={image.src}
-                            alt={image.alt}
-                            fill
-                            sizes="(max-width: 640px) 45vw, 180px"
-                            className="object-cover"
-                          />
-                        </div>
-                        <figcaption className="text-[11px] leading-snug text-ink-faint">
-                          {image.caption}
-                        </figcaption>
-                      </figure>
-                    </li>
-                  ))}
-                </ul>
+              <div className="space-y-8">
+                {(["cad", "drawing", "photo"] as const).map((kind) => {
+                  const group = project.images!.filter(
+                    (img) => (img.kind ?? "photo") === kind,
+                  );
+                  if (group.length === 0) return null;
+                  const title =
+                    kind === "cad"
+                      ? "CAD & exploded views"
+                      : kind === "drawing"
+                        ? "Manufacturing drawings"
+                        : "Build photos";
+                  const wide = kind !== "photo";
+                  return (
+                    <div key={kind}>
+                      <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-ink-faint">
+                        {title}
+                      </p>
+                      <ul
+                        className={cn(
+                          "mt-3 grid gap-3",
+                          wide
+                            ? "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
+                            : "grid-cols-2 sm:grid-cols-3 lg:grid-cols-4",
+                        )}
+                      >
+                        {group.map((image) => (
+                          <li
+                            key={image.src}
+                            className={cn(
+                              kind === "cad" &&
+                                image.src.includes("toolhead-exploded") &&
+                                "sm:col-span-2",
+                              kind === "drawing" && "sm:col-span-1 lg:col-span-1",
+                            )}
+                          >
+                            <figure className="space-y-1.5">
+                              <div
+                                className={cn(
+                                  "relative overflow-hidden rounded-md bg-white ring-1 ring-ink/10",
+                                  kind === "drawing"
+                                    ? "aspect-[4/3]"
+                                    : kind === "cad"
+                                      ? "aspect-[16/10]"
+                                      : "aspect-[4/3]",
+                                )}
+                              >
+                                <Image
+                                  src={image.src}
+                                  alt={image.alt}
+                                  fill
+                                  sizes={
+                                    wide
+                                      ? "(max-width: 640px) 100vw, 40vw"
+                                      : "(max-width: 640px) 45vw, 200px"
+                                  }
+                                  className={cn(
+                                    kind === "drawing"
+                                      ? "object-contain p-2"
+                                      : "object-cover",
+                                  )}
+                                />
+                              </div>
+                              <figcaption className="text-[11px] leading-snug text-ink-faint">
+                                {image.caption}
+                              </figcaption>
+                            </figure>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  );
+                })}
               </div>
             )}
 
