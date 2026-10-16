@@ -284,11 +284,6 @@ export const PROJECTS: Project[] = [
     ],
     videos: [
       {
-        src: "/videos/can-arm-transfer.mp4",
-        poster: "/videos/can-arm-transfer-poster.jpg",
-        caption: "Demo — grasp and transfer a can with the scripted servo sequence",
-      },
-      {
         src: "/videos/can-arm-motion.mp4",
         poster: "/videos/can-arm-motion-poster.jpg",
         caption: "Bench bring-up — joint motion and gripper under Arduino control",
