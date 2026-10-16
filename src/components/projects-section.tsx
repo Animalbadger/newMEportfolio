@@ -38,9 +38,8 @@ function statusTone(status: ProjectStatus) {
 }
 
 export function ProjectsSection() {
-  const featured = PROJECTS.find((p) => p.featured) ?? PROJECTS[0];
   const [filter, setFilter] = useState<Filter>("all");
-  const [openId, setOpenId] = useState<string | null>(featured?.id ?? null);
+  const [openId, setOpenId] = useState<string | null>(null);
   const [loadState, setLoadState] = useState<LoadState>("ready");
   const [isPending, startTransition] = useTransition();
   const loadGeneration = useRef(0);
